@@ -1,1 +1,2 @@
-# study-note-react-native
+# React Native 맛보기
+
