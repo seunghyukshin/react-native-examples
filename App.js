@@ -1,14 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 
+import {NavigationContainer} from '@react-navigation/native';
+import  ScreenStack  from './src/screens';
 const App = () => {
-  return ( 
-    <View>
-      <Text>
-        Hello, React Native !!
-      </Text>
-    </View>
-
+  return (
+    <NavigationContainer>
+      <ScreenStack/>
+    </NavigationContainer>
   );
 }
 export default App;
