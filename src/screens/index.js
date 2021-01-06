@@ -35,7 +35,14 @@ const Tab = createBottomTabNavigator();
 
 function ScreenTab() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeBackgroundColor: "black",
+        inactiveBackgroundColor: "black",
+        activeTintColor: "white",
+        showLabel: false,
+      }}
+    >
       <Tab.Screen
         name="Movie"
         component={MovieScreen}
@@ -47,9 +54,6 @@ function ScreenTab() {
               size={size}
             />
           ),
-          tabBarLabel: () => {
-            return null;
-          },
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -63,9 +67,6 @@ function ScreenTab() {
               size={size}
             />
           ),
-          tabBarLabel: () => {
-            return null;
-          },
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -79,9 +80,6 @@ function ScreenTab() {
               size={size}
             />
           ),
-          tabBarLabel: () => {
-            return null;
-          },
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -91,9 +89,6 @@ function ScreenTab() {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="heart" color={color} size={size} />
           ),
-          tabBarLabel: () => {
-            return null;
-          },
         }}
       ></Tab.Screen>
     </Tab.Navigator>
