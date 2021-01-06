@@ -4,6 +4,8 @@ import MovieScreen from "./MovieScreen";
 import TvScreen from "./TvScreen";
 import SearchScreen from "./SearchScreen";
 import DiscoveryScreen from "./DiscoveryScreen";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 /*
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -34,10 +36,66 @@ const Tab = createBottomTabNavigator();
 function ScreenTab() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Movie" component={MovieScreen}></Tab.Screen>
-      <Tab.Screen name="Tv" component={TvScreen}></Tab.Screen>
-      <Tab.Screen name="Seach" component={SearchScreen}></Tab.Screen>
-      <Tab.Screen name="Discovery" component={DiscoveryScreen}></Tab.Screen>
+      <Tab.Screen
+        name="Movie"
+        component={MovieScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="movie-open"
+              color={color}
+              size={size}
+            />
+          ),
+          tabBarLabel: () => {
+            return null;
+          },
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="Tv"
+        component={TvScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="television"
+              color={color}
+              size={size}
+            />
+          ),
+          tabBarLabel: () => {
+            return null;
+          },
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="Seach"
+        component={SearchScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="movie-search"
+              color={color}
+              size={size}
+            />
+          ),
+          tabBarLabel: () => {
+            return null;
+          },
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="Discovery"
+        component={DiscoveryScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="heart" color={color} size={size} />
+          ),
+          tabBarLabel: () => {
+            return null;
+          },
+        }}
+      ></Tab.Screen>
     </Tab.Navigator>
   );
 }
