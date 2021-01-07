@@ -5,14 +5,14 @@ function TvScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.halfContainer}>
-        <Text>This is Tv Screen </Text>
+        <Text style={styles.text}>This is Tv Screen </Text>
       </View>
       <View style={styles.halfContainer}>
         <Button
           title="G O H O M E"
           onPress={() =>
             navigation.push("Detail", {
-              text: "cant you see too ?",
+              title: "기생충",
               count: 10,
             })
           }
@@ -27,12 +27,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "yellow",
+    backgroundColor: "black",
   },
   halfContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    color: "white",
   },
 });
 

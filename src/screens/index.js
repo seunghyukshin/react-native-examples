@@ -8,9 +8,20 @@ const Stack = createStackNavigator();
 
 function ScreenStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "black",
+        },
+        headerTintColor: "white",
+      }}
+    >
       <Stack.Screen name="MyApp" component={ScreenTab}></Stack.Screen>
-      <Stack.Screen name="Detail" component={DetailScreen}></Stack.Screen>
+      <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={({ route }) => ({ title: route.params.title })}
+      ></Stack.Screen>
     </Stack.Navigator>
   );
 }

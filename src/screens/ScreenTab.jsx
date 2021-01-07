@@ -1,35 +1,11 @@
 import React from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import MovieScreen from "./MovieScreen";
 import TvScreen from "./TvScreen";
 import SearchScreen from "./SearchScreen";
 import DiscoveryScreen from "./DiscoveryScreen";
-
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-/*
-
-import { createStackNavigator } from "@react-navigation/stack";
-
-const Stack = createStackNavigator();
-
-function ScreenStack() {
-  return (
-    <Stack.Navigator initialRouteName="Movie">
-      <Stack.Screen
-        name="Movie"
-        component={MovieScreen}
-        options={{ title: "I'm home~" }}
-      ></Stack.Screen>
-      <Stack.Screen name="Tv" component={TvScreen}></Stack.Screen>
-    </Stack.Navigator>
-  );
-}
-
-export default ScreenStack;
-
-*/
-
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
