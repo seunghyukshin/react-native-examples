@@ -1,22 +1,13 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
-
-function MovieScreen({ navigation }) {
+import { View, Text, StyleSheet } from "react-native";
+function DetailScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.halfContainer}>
-        <Text>This is MovieScreen !!</Text>
+        <Text style={styles.text}> DetailScreen </Text>
       </View>
       <View style={styles.halfContainer}>
-        <Button
-          title="go second"
-          onPress={() =>
-            navigation.navigate("Detail", {
-              text: "cant you see ?",
-              count: 1,
-            })
-          }
-        />
+        <Text style={styles.text}> DetailScreen</Text>
       </View>
     </View>
   );
@@ -27,12 +18,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "black",
   },
   halfContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
+  text: {
+    color: "white",
+  },
 });
-export default MovieScreen;
+
+export default DetailScreen;

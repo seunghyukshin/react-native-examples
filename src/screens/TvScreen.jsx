@@ -11,7 +11,7 @@ function TvScreen({ navigation }) {
         <Button
           title="G O H O M E"
           onPress={() =>
-            navigation.navigate("Tv", {
+            navigation.push("Detail", {
               text: "cant you see too ?",
               count: 10,
             })
