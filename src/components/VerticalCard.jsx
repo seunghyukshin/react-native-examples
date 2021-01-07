@@ -7,36 +7,44 @@ function VerticalCard({ movieInfo, onPress }) {
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <View style={styles.container}>
-        <Image
-          source={{
-            uri: imgUrl,
-            width: 100,
-            height: 100,
-          }}
-          style={styles.image}
-        ></Image>
+      <Image
+        source={{
+          uri: imgUrl,
+        }}
+        style={styles.image}
+      ></Image>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
+          {title}
+        </Text>
       </View>
-      <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.rate}> ☆ {rate} / 10 </Text>
-      </View>
+      <Text style={styles.rate}> ☆ {rate} / 10 </Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    alignItems: "center",
+    padding: 10,
   },
   image: {
-    flex: 5,
+    width: 100,
+    height: 160,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  titleContainer: {
+    width: 100,
+    alignItems: "center",
   },
   title: {
-    flex: 1,
+    marginBottom: 5,
+    color: "white",
   },
   rate: {
-    flex: 1,
+    fontSize: 12,
+    color: "white",
   },
 });
 export default VerticalCard;

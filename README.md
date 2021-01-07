@@ -15,7 +15,7 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
 - [ ] Screen
   - [ ] Movies
     - [ ] 최상단 ( 자동 슬라이드)
-    - [ ] Popular Movies (슬라이드)
+    - [x] Popular Movies (슬라이드)
     - [ ] Coming Soon
   - [ ] TV
     - [ ] Popular Shows (슬라이드)
