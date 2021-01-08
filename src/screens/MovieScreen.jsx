@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
 
 import { VerticalCard } from "~/components";
+import { HorizontalCard } from "~/components";
 
 const movieList = [
   {
@@ -9,24 +10,30 @@ const movieList = [
       "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
     title: "Yellow Sea",
     rate: 5,
+    date: "01/20/21",
+    story:
+      "hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! ",
   },
   {
     imgUrl:
       "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
     title: "Honest Thief",
     rate: 5,
+    date: "01/20/21",
   },
   {
     imgUrl:
       "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
     title: "Soul",
     rate: 5,
+    date: "01/20/21",
   },
   {
     imgUrl:
       "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
     title: "We Can Be Heros Real kkkkkkkkkkk",
     rate: 5,
+    date: "01/20/21",
   },
   {
     imgUrl:
@@ -72,13 +79,14 @@ function MovieScreen({ navigation }) {
         <View style={styles.subTitleContainer}>
           <Text style={styles.subTitle}> Coming Soon </Text>
         </View>
-        <ScrollView horizontal={true} style={styles.cardList}>
+        <ScrollView style={styles.cardList}>
           {movieList.map((movie, index) => (
-            <VerticalCard
+            <HorizontalCard
               movieInfo={{
                 imgUrl: movie.imgUrl,
                 title: movie.title,
-                rate: movie.rate,
+                date: movie.date,
+                story: movie.story,
               }}
               onPress={() =>
                 navigation.navigate("Detail", {
@@ -99,7 +107,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "black",
   },
-  subTitleContainer: { marginLeft: 30, marginTop: 20, marginBottom: 10 },
+  subTitleContainer: { marginLeft: 30, marginTop: 40, marginBottom: 10 },
   subTitle: {
     fontSize: 16,
     fontWeight: "bold",

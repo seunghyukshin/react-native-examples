@@ -14,7 +14,7 @@ function VerticalCard({ movieInfo, onPress }) {
         style={styles.image}
       ></Image>
       <View style={styles.titleContainer}>
-        <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
+        <Text style={styles.title} numberOfLines={1}>
           {title}
         </Text>
       </View>
@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 100,
-    height: 160,
+    height: 170,
     borderRadius: 5,
     marginBottom: 10,
   },
   titleContainer: {
-    width: 100,
+    width: 78,
     alignItems: "center",
   },
   title: {
