@@ -18,7 +18,7 @@ function VerticalCard({ movieInfo, onPress }) {
           {title}
         </Text>
       </View>
-      <Text style={styles.rate}> ☆ {rate} / 10 </Text>
+      <Text style={styles.rate}> ⭐ {rate} / 10 </Text>
     </TouchableOpacity>
   );
 }

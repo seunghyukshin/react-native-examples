@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
+import Swiper from "react-native-swiper";
+import { VerticalCard, HorizontalCard, AutoSlideCard } from "~/components";
 
-import { VerticalCard } from "~/components";
-import { HorizontalCard } from "~/components";
+// var ViewPager = require("react-native-viewpager");
 
 const movieList = [
   {
@@ -51,6 +52,54 @@ const movieList = [
 function MovieScreen({ navigation }) {
   return (
     <ScrollView style={styles.container}>
+      <Swiper
+        showsPagination={false}
+        autoplay={true}
+        // style={{ flex: 1 }}
+        autoplayTimeout={3}
+        style={styles.swiper}
+      >
+        <AutoSlideCard
+          movieInfo={movieList[0]}
+          onPress={() =>
+            navigation.navigate("Detail", {
+              title: movieList[0].title,
+              count: 1,
+            })
+          }
+        />
+
+        <AutoSlideCard
+          movieInfo={movieList[0]}
+          onPress={() =>
+            navigation.navigate("Detail", {
+              title: movieList[0].title,
+              count: 1,
+            })
+          }
+        />
+
+        <AutoSlideCard
+          movieInfo={movieList[0]}
+          onPress={() =>
+            navigation.navigate("Detail", {
+              title: movieList[0].title,
+              count: 1,
+            })
+          }
+        />
+
+        <AutoSlideCard
+          movieInfo={movieList[5]}
+          onPress={() =>
+            navigation.navigate("Detail", {
+              title: movieList[5].title,
+              count: 1,
+            })
+          }
+        />
+      </Swiper>
+
       <View style={styles.section}>
         <View style={styles.subTitleContainer}>
           <Text style={styles.subTitle}> Popluar Movies</Text>
@@ -107,6 +156,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "black",
   },
+  swiper: {
+    height: 220,
+  },
   subTitleContainer: { marginLeft: 30, marginTop: 40, marginBottom: 10 },
   subTitle: {
     fontSize: 16,
@@ -117,4 +169,5 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
 });
+
 export default MovieScreen;

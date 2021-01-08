@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
 
-import { VerticalCard } from "~/components";
+import { VerticalCard, HorizontalCard } from "~/components";
 
 const movieList = [
   {
@@ -9,6 +9,8 @@ const movieList = [
       "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
     title: "Yellow Sea",
     rate: 5,
+    story:
+      "hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! ",
   },
   {
     imgUrl:
@@ -43,7 +45,7 @@ const movieList = [
 
 function TvScreen({ navigation }) {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} auto>
       <View style={styles.section}>
         <View style={styles.subTitleContainer}>
           <Text style={styles.subTitle}> Popluar Shows</Text>
@@ -91,6 +93,31 @@ function TvScreen({ navigation }) {
           ))}
         </ScrollView>
       </View>
+
+      <View style={styles.section}>
+        <View style={styles.subTitleContainer}>
+          <Text style={styles.subTitle}> Airing Today </Text>
+        </View>
+        <ScrollView style={styles.cardList}>
+          {movieList.map((movie, index) => (
+            <HorizontalCard
+              movieInfo={{
+                imgUrl: movie.imgUrl,
+                title: movie.title,
+                date: movie.date,
+                story: movie.story,
+              }}
+              onPress={() =>
+                navigation.navigate("Detail", {
+                  title: movie.title,
+                  count: 1,
+                })
+              }
+              key={index}
+            />
+          ))}
+        </ScrollView>
+      </View>
     </ScrollView>
   );
 }
@@ -103,7 +130,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "black",
   },
-  subTitleContainer: { marginLeft: 30, marginTop: 20, marginBottom: 10 },
+  subTitleContainer: { marginLeft: 30, marginTop: 40, marginBottom: 10 },
   subTitle: {
     fontSize: 16,
     fontWeight: "bold",

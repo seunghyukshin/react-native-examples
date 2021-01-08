@@ -10,8 +10,8 @@ function HorizontalCard({ movieInfo, onPress }) {
       <Image source={{ uri: imgUrl }} style={styles.image}></Image>
       <View style={styles.textView}>
         <Text style={styles.title}> {title} </Text>
-        <Text style={styles.date}> {date} </Text>
-        <Text style={styles.story} numberOfLines={3}>
+        <Text style={styles.text}> {date} </Text>
+        <Text style={[styles.text, styles.story]} numberOfLines={3}>
           {" "}
           {story}{" "}
         </Text>
@@ -24,9 +24,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingTop: 10,
+    paddingBottom: 20,
   },
-  image: { width: 100, height: 170, borderRadius: 5 },
+  image: {
+    width: 100,
+    height: 170,
+    borderRadius: 5,
+  },
   textView: {
     width: 200,
     marginLeft: 20,
@@ -36,15 +41,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
-  date: {
+  text: {
     marginBottom: 10,
     fontSize: 12,
     color: "#dcdcdc",
   },
   story: {
-    marginBottom: 10,
     fontSize: 13,
-    color: "#dcdcdc",
   },
 });
 
