@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
-import { VerticalCard, HorizontalCard, AutoSlideCard } from "~/components";
 
-// var ViewPager = require("react-native-viewpager");
+import { VerticalCard, HorizontalCard, AutoSlideCard } from "~/components";
+import { getPopularMovies } from "~/modules";
 
 const movieList = [
   {
@@ -50,55 +50,51 @@ const movieList = [
 ];
 
 function MovieScreen({ navigation }) {
+  const [popularDatas, setPopularDatas] = useState(null);
+
+  const saveMovieData = async () => {
+    const result = await getPopularMovies();
+    setPopularDatas(result);
+    // getPopularMovies().then((res) => {
+    //   setPopularDatas(res);
+    // });
+  };
+
+  useEffect(() => {
+    console.log("======= MovieScreen.js - useEffect()=======");
+    console.log(popularDatas ? popularDatas[0] : " state null ");
+    popularDatas ? " " : saveMovieData();
+  });
+
   return (
     <ScrollView style={styles.container}>
-      <Swiper
-        showsPagination={false}
-        autoplay={true}
-        // style={{ flex: 1 }}
-        autoplayTimeout={3}
-        style={styles.swiper}
-      >
-        <AutoSlideCard
-          movieInfo={movieList[0]}
-          onPress={() =>
-            navigation.navigate("Detail", {
-              title: movieList[0].title,
-              count: 1,
-            })
-          }
-        />
+      {console.log("======= MovieScreen.js - reder()=======")}
+      {console.log(popularDatas ? popularDatas[0] : " kkk ")}
 
-        <AutoSlideCard
-          movieInfo={movieList[0]}
-          onPress={() =>
-            navigation.navigate("Detail", {
-              title: movieList[0].title,
-              count: 1,
-            })
-          }
-        />
-
-        <AutoSlideCard
-          movieInfo={movieList[0]}
-          onPress={() =>
-            navigation.navigate("Detail", {
-              title: movieList[0].title,
-              count: 1,
-            })
-          }
-        />
-
-        <AutoSlideCard
-          movieInfo={movieList[5]}
-          onPress={() =>
-            navigation.navigate("Detail", {
-              title: movieList[5].title,
-              count: 1,
-            })
-          }
-        />
-      </Swiper>
+      {popularDatas ? (
+        <Swiper
+          showsPagination={false}
+          autoplay={true}
+          // style={{ flex: 1 }}
+          autoplayTimeout={3}
+          style={styles.swiper}
+        >
+          {popularDatas.map((data, index) => (
+            <AutoSlideCard
+              movieInfo={data}
+              onPress={() =>
+                navigation.navigate("Detail", {
+                  title: "what",
+                  count: 1,
+                })
+              }
+              key={index}
+            />
+          ))}
+        </Swiper>
+      ) : (
+        console.log(popularDatas)
+      )}
 
       <View style={styles.section}>
         <View style={styles.subTitleContainer}>

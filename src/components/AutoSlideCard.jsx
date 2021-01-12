@@ -8,25 +8,35 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { IMAGE_URI } from "~/modules";
 function AutoSlideCard({ movieInfo, onPress }) {
-  const { imgUrl, title, rate, story } = movieInfo;
+  const {
+    poster_path,
+    backdrop_path,
+    title,
+    vote_average,
+    overview,
+  } = movieInfo;
 
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={{ uri: imgUrl }}
+        source={{ uri: IMAGE_URI + backdrop_path }}
         style={styles.bgImage}
       ></ImageBackground>
 
       <View style={styles.subContainer}>
-        <Image source={{ uri: imgUrl }} style={styles.image}></Image>
+        <Image
+          source={{ uri: IMAGE_URI + poster_path }}
+          style={styles.image}
+        ></Image>
 
         <View style={styles.rightView}>
           <Text style={styles.title}> {title} </Text>
-          <Text style={styles.text}> ⭐ {rate} / 10 </Text>
+          <Text style={styles.text}> ⭐ {vote_average} / 10 </Text>
           <Text style={[styles.text, styles.story]} numberOfLines={3}>
-            {" "}
-            {story}{" "}
+            {""}
+            {overview} {""}
           </Text>
 
           <View style={styles.buttonView}>

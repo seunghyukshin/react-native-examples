@@ -14,7 +14,7 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
 - [x] Bottom Tab
 - [ ] Screen
   - [ ] Movies
-    - [ ] 최상단 ( 자동 슬라이드)
+    - [ ] 최상단 (자동 슬라이드)
     - [x] Popular Movies (슬라이드)
     - [ ] Coming Soon
   - [ ] TV
@@ -28,11 +28,11 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
   - [ ] Discovery
     - [ ] Drag & Drop
 - [ ] Component
-  - [ ] 영화 프로필
-    - [ ] Movies 최상단 component
-    - [ ] 세로 component (Popular Movies, Popular Shows, Movies/TV Results)
-    - [ ] 가로 component (Coming Soon, Airing Today)
-    - [ ] 가로 세로 component는 isHover시 opacity 값 변경
+  - [x] 영화 프로필
+    - [x] Movies 최상단 component
+    - [x] 세로 component (Popular Movies, Popular Shows, Movies/TV Results)
+    - [x] 가로 component (Coming Soon, Airing Today)
+    - [x] 가로 세로 component는 isHover시 opacity 값 변경
   - [ ] 영화 Detail
     - [ ] 각 정보 출력
     - [ ] Movies, TV, Search 스크린에서 들어올 수 있고, 뒤로가기 시 들어왔던 스크린으로 복귀
