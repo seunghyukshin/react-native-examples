@@ -3,75 +3,31 @@ import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
 
 import { VerticalCard, HorizontalCard, AutoSlideCard } from "~/components";
-import { getPopularMovies } from "~/modules";
-
-const movieList = [
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Yellow Sea",
-    rate: 5,
-    date: "01/20/21",
-    story:
-      "hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! ",
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Honest Thief",
-    rate: 5,
-    date: "01/20/21",
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Soul",
-    rate: 5,
-    date: "01/20/21",
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "We Can Be Heros Real kkkkkkkkkkk",
-    rate: 5,
-    date: "01/20/21",
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Yellow Sea",
-    rate: 5,
-  },
-  {
-    imgUrl: "https://reactnative.dev/img/tiny_logo.png",
-    title: "React Native",
-    rate: 10,
-  },
-];
+import { getPopularMovies, getUpcomingMovies } from "~/modules";
 
 function MovieScreen({ navigation }) {
-  const [popularDatas, setPopularDatas] = useState(null);
+  const [popularMovies, setPopularMovies] = useState(null);
+  const [upcomingMovies, setUpcomingMovies] = useState(null);
 
-  const saveMovieData = async () => {
-    const result = await getPopularMovies();
-    setPopularDatas(result);
-    // getPopularMovies().then((res) => {
-    //   setPopularDatas(res);
-    // });
+  const saveMovieDatas = async () => {
+    const popularData = await getPopularMovies();
+    setPopularMovies(popularData);
+
+    const upcomingData = await getUpcomingMovies();
+    setUpcomingMovies(upcomingData);
   };
 
   useEffect(() => {
     console.log("======= MovieScreen.js - useEffect()=======");
-    console.log(popularDatas ? popularDatas[0] : " state null ");
-    popularDatas ? " " : saveMovieData();
+    console.log(popularMovies ? popularMovies[0] : " state null ");
+    popularMovies && upcomingMovies ? " " : saveMovieDatas();
   });
 
-  return (
+  return popularMovies && upcomingMovies ? (
     <ScrollView style={styles.container}>
       {console.log("======= MovieScreen.js - reder()=======")}
-      {console.log(popularDatas ? popularDatas[0] : " kkk ")}
 
-      {popularDatas ? (
+      {popularMovies ? (
         <Swiper
           showsPagination={false}
           autoplay={true}
@@ -79,9 +35,9 @@ function MovieScreen({ navigation }) {
           autoplayTimeout={3}
           style={styles.swiper}
         >
-          {popularDatas.map((data, index) => (
+          {popularMovies.map((movie, index) => (
             <AutoSlideCard
-              movieInfo={data}
+              movieInfo={movie}
               onPress={() =>
                 navigation.navigate("Detail", {
                   title: "what",
@@ -93,7 +49,7 @@ function MovieScreen({ navigation }) {
           ))}
         </Swiper>
       ) : (
-        console.log(popularDatas)
+        console.log(popularMovies)
       )}
 
       <View style={styles.section}>
@@ -101,22 +57,20 @@ function MovieScreen({ navigation }) {
           <Text style={styles.subTitle}> Popluar Movies</Text>
         </View>
         <ScrollView horizontal={true} style={styles.cardList}>
-          {movieList.map((movie, index) => (
-            <VerticalCard
-              movieInfo={{
-                imgUrl: movie.imgUrl,
-                title: movie.title,
-                rate: movie.rate,
-              }}
-              onPress={() =>
-                navigation.navigate("Detail", {
-                  title: movie.title,
-                  count: 1,
-                })
-              }
-              key={index}
-            />
-          ))}
+          {popularMovies
+            ? popularMovies.map((movie, index) => (
+                <VerticalCard
+                  movieInfo={movie}
+                  onPress={() =>
+                    navigation.navigate("Detail", {
+                      title: movie.title,
+                      count: 1,
+                    })
+                  }
+                  key={index}
+                />
+              ))
+            : ""}
         </ScrollView>
       </View>
 
@@ -125,26 +79,27 @@ function MovieScreen({ navigation }) {
           <Text style={styles.subTitle}> Coming Soon </Text>
         </View>
         <ScrollView style={styles.cardList}>
-          {movieList.map((movie, index) => (
-            <HorizontalCard
-              movieInfo={{
-                imgUrl: movie.imgUrl,
-                title: movie.title,
-                date: movie.date,
-                story: movie.story,
-              }}
-              onPress={() =>
-                navigation.navigate("Detail", {
-                  title: movie.title,
-                  count: 1,
-                })
-              }
-              key={index}
-            />
-          ))}
+          {upcomingMovies
+            ? upcomingMovies.map((movie, index) => (
+                <HorizontalCard
+                  movieInfo={movie}
+                  onPress={() =>
+                    navigation.navigate("Detail", {
+                      title: movie.title,
+                      count: 1,
+                    })
+                  }
+                  key={index}
+                />
+              ))
+            : ""}
         </ScrollView>
       </View>
     </ScrollView>
+  ) : (
+    <View>
+      <Text> fu ck u</Text>
+    </View>
   );
 }
 

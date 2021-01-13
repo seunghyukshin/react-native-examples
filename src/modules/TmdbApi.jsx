@@ -7,7 +7,14 @@ const getPopularMovies = async () => {
   const res = await axios.get(
     `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_KEY}&language=en-US&page=1`
   );
-  return res.data.results.slice(0, 10);
+  return res.data.results.slice(0, 20);
 };
 
-export { getPopularMovies, IMAGE_URI };
+const getUpcomingMovies = async () => {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}&language=en-US&page=1`
+  );
+  return res.data.results.slice(0, 20);
+};
+
+export { getPopularMovies, getUpcomingMovies, IMAGE_URI };

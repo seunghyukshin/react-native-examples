@@ -1,19 +1,23 @@
 import React from "react";
 
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { IMAGE_URI } from "~/modules";
 
 function HorizontalCard({ movieInfo, onPress }) {
-  const { imgUrl, title, date, story } = movieInfo;
+  const { poster_path, title, release_date, overview } = movieInfo;
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Image source={{ uri: imgUrl }} style={styles.image}></Image>
+      <Image
+        source={{ uri: IMAGE_URI + poster_path }}
+        style={styles.image}
+      ></Image>
       <View style={styles.textView}>
         <Text style={styles.title}> {title} </Text>
-        <Text style={styles.text}> {date} </Text>
+        <Text style={styles.text}> {release_date} </Text>
         <Text style={[styles.text, styles.story]} numberOfLines={3}>
           {" "}
-          {story}{" "}
+          {overview}{" "}
         </Text>
       </View>
     </TouchableOpacity>

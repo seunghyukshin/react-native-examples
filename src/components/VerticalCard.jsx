@@ -1,15 +1,15 @@
 import React from "react";
 
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-
+import { IMAGE_URI } from "~/modules";
 function VerticalCard({ movieInfo, onPress }) {
-  const { imgUrl, title, rate } = movieInfo;
+  const { poster_path, title, vote_average } = movieInfo;
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image
         source={{
-          uri: imgUrl,
+          uri: IMAGE_URI + poster_path,
         }}
         style={styles.image}
       ></Image>
@@ -18,7 +18,7 @@ function VerticalCard({ movieInfo, onPress }) {
           {title}
         </Text>
       </View>
-      <Text style={styles.rate}> ⭐ {rate} / 10 </Text>
+      <Text style={styles.rate}> ⭐ {vote_average} / 10 </Text>
     </TouchableOpacity>
   );
 }

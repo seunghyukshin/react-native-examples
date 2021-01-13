@@ -14,9 +14,9 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
 - [x] Bottom Tab
 - [ ] Screen
   - [ ] Movies
-    - [ ] 최상단 (자동 슬라이드)
+    - [x] 최상단 (자동 슬라이드)
     - [x] Popular Movies (슬라이드)
-    - [ ] Coming Soon
+    - [x] Coming Soon
   - [ ] TV
     - [ ] Popular Shows (슬라이드)
     - [ ] Top Rated (슬라이드)
