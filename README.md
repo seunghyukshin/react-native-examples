@@ -18,9 +18,9 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
     - [x] Popular Movies (슬라이드)
     - [x] Coming Soon
   - [ ] TV
-    - [ ] Popular Shows (슬라이드)
-    - [ ] Top Rated (슬라이드)
-    - [ ] Airing Today
+    - [x] Popular Shows (슬라이드)
+    - [x] Top Rated (슬라이드)
+    - [x] Airing Today
   - [ ] Search
     - [ ] 입력창
     - [ ] Movie Results (슬라이드)

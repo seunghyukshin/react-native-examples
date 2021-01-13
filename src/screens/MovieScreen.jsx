@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
 
 import { VerticalCard, HorizontalCard, AutoSlideCard } from "~/components";
@@ -19,7 +19,6 @@ function MovieScreen({ navigation }) {
 
   useEffect(() => {
     console.log("======= MovieScreen.js - useEffect()=======");
-    console.log(popularMovies ? popularMovies[0] : " state null ");
     popularMovies && upcomingMovies ? " " : saveMovieDatas();
   });
 

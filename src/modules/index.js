@@ -1,1 +1,8 @@
-export { getPopularMovies, getUpcomingMovies, IMAGE_URI } from "./TmdbApi";
+export {
+  getPopularMovies,
+  getUpcomingMovies,
+  getPopularTv,
+  getTopRatedTv,
+  getAiringTv,
+  IMAGE_URI,
+} from "./TmdbApi";

@@ -1,7 +1,8 @@
-import React from "react";
-import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 
 import { VerticalCard, HorizontalCard } from "~/components";
+import { getPopularTv, getTopRatedTv, getAiringTv } from "~/modules";
 
 const movieList = [
   {
@@ -44,23 +45,39 @@ const movieList = [
 ];
 
 function TvScreen({ navigation }) {
-  return (
+  const [popularTvs, setPopularTvs] = useState(null);
+  const [topRatedTvs, setTopRatedTvs] = useState(null);
+  const [airingTvs, setAiringTvs] = useState(null);
+
+  const saveTvDatas = async () => {
+    const popularData = await getPopularTv();
+    setPopularTvs(popularData);
+
+    const topRatedData = await getTopRatedTv();
+    setTopRatedTvs(topRatedData);
+
+    const airingData = await getAiringTv();
+    setAiringTvs(airingData);
+  };
+
+  useEffect(() => {
+    console.log("======= Tv Screen.js - useEffect()=======");
+    popularTvs && topRatedTvs && airingTvs ? " " : saveTvDatas();
+  });
+
+  return popularTvs && topRatedTvs && airingTvs ? (
     <ScrollView style={styles.container} auto>
       <View style={styles.section}>
         <View style={styles.subTitleContainer}>
           <Text style={styles.subTitle}> Popluar Shows</Text>
         </View>
         <ScrollView horizontal={true} style={styles.cardList}>
-          {movieList.map((movie, index) => (
+          {popularTvs.map((tv, index) => (
             <VerticalCard
-              movieInfo={{
-                imgUrl: movie.imgUrl,
-                title: movie.title,
-                rate: movie.rate,
-              }}
+              movieInfo={tv}
               onPress={() =>
                 navigation.navigate("Detail", {
-                  title: movie.title,
+                  title: tv.title,
                   count: 1,
                 })
               }
@@ -75,13 +92,9 @@ function TvScreen({ navigation }) {
           <Text style={styles.subTitle}> Top Rated </Text>
         </View>
         <ScrollView horizontal={true} style={styles.cardList}>
-          {movieList.map((movie, index) => (
+          {topRatedTvs.map((movie, index) => (
             <VerticalCard
-              movieInfo={{
-                imgUrl: movie.imgUrl,
-                title: movie.title,
-                rate: movie.rate,
-              }}
+              movieInfo={movie}
               onPress={() =>
                 navigation.navigate("Detail", {
                   title: movie.title,
@@ -99,14 +112,9 @@ function TvScreen({ navigation }) {
           <Text style={styles.subTitle}> Airing Today </Text>
         </View>
         <ScrollView style={styles.cardList}>
-          {movieList.map((movie, index) => (
+          {airingTvs.map((movie, index) => (
             <HorizontalCard
-              movieInfo={{
-                imgUrl: movie.imgUrl,
-                title: movie.title,
-                date: movie.date,
-                story: movie.story,
-              }}
+              movieInfo={movie}
               onPress={() =>
                 navigation.navigate("Detail", {
                   title: movie.title,
@@ -119,6 +127,10 @@ function TvScreen({ navigation }) {
         </ScrollView>
       </View>
     </ScrollView>
+  ) : (
+    <View>
+      <Text> fuck u</Text>
+    </View>
   );
 }
 
