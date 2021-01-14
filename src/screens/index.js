@@ -20,7 +20,11 @@ function ScreenStack() {
       <Stack.Screen
         name="Detail"
         component={DetailScreen}
-        options={({ route }) => ({ title: route.params.title })}
+        options={({ route }) =>
+          route.params.info.title
+            ? { title: route.params.info.title }
+            : { title: route.params.info.name }
+        }
       ></Stack.Screen>
     </Stack.Navigator>
   );

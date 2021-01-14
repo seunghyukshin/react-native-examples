@@ -2,8 +2,10 @@ import React from "react";
 
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { IMAGE_URI } from "~/modules";
+
 function VerticalCard({ movieInfo, onPress }) {
-  const { poster_path, title, vote_average } = movieInfo;
+  const { poster_path, original_title, name, vote_average } = movieInfo;
+  const title = original_title ? original_title : name;
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>

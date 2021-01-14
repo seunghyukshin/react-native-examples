@@ -4,46 +4,6 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { VerticalCard, HorizontalCard } from "~/components";
 import { getPopularTv, getTopRatedTv, getAiringTv } from "~/modules";
 
-const movieList = [
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Yellow Sea",
-    rate: 5,
-    story:
-      "hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! hello !! ",
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Honest Thief",
-    rate: 5,
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Soul",
-    rate: 5,
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "We Can Be Heros Real kkkkkkkkkkk",
-    rate: 5,
-  },
-  {
-    imgUrl:
-      "https://cphoto.asiae.co.kr/listimglink/6/2010121717211687643_1.jpg",
-    title: "Yellow Sea",
-    rate: 5,
-  },
-  {
-    imgUrl: "https://reactnative.dev/img/tiny_logo.png",
-    title: "React Native",
-    rate: 10,
-  },
-];
-
 function TvScreen({ navigation }) {
   const [popularTvs, setPopularTvs] = useState(null);
   const [topRatedTvs, setTopRatedTvs] = useState(null);
@@ -77,8 +37,8 @@ function TvScreen({ navigation }) {
               movieInfo={tv}
               onPress={() =>
                 navigation.navigate("Detail", {
-                  title: tv.title,
-                  count: 1,
+                  info: tv,
+                  from: "tv",
                 })
               }
               key={index}
@@ -92,13 +52,13 @@ function TvScreen({ navigation }) {
           <Text style={styles.subTitle}> Top Rated </Text>
         </View>
         <ScrollView horizontal={true} style={styles.cardList}>
-          {topRatedTvs.map((movie, index) => (
+          {topRatedTvs.map((tv, index) => (
             <VerticalCard
-              movieInfo={movie}
+              movieInfo={tv}
               onPress={() =>
                 navigation.navigate("Detail", {
-                  title: movie.title,
-                  count: 1,
+                  info: tv,
+                  from: "tv",
                 })
               }
               key={index}
@@ -112,13 +72,13 @@ function TvScreen({ navigation }) {
           <Text style={styles.subTitle}> Airing Today </Text>
         </View>
         <ScrollView style={styles.cardList}>
-          {airingTvs.map((movie, index) => (
+          {airingTvs.map((tv, index) => (
             <HorizontalCard
-              movieInfo={movie}
+              movieInfo={tv}
               onPress={() =>
                 navigation.navigate("Detail", {
-                  title: movie.title,
-                  count: 1,
+                  info: tv,
+                  from: "tv",
                 })
               }
               key={index}

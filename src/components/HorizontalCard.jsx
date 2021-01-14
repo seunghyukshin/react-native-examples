@@ -4,8 +4,15 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { IMAGE_URI } from "~/modules";
 
 function HorizontalCard({ movieInfo, onPress }) {
-  const { poster_path, title, release_date, overview } = movieInfo;
+  const {
+    poster_path,
+    original_title,
+    name,
+    release_date,
+    overview,
+  } = movieInfo;
 
+  const title = original_title ? original_title : name;
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image
@@ -14,7 +21,11 @@ function HorizontalCard({ movieInfo, onPress }) {
       ></Image>
       <View style={styles.textView}>
         <Text style={styles.title}> {title} </Text>
-        <Text style={styles.text}> {release_date} </Text>
+        {release_date ? (
+          <Text style={styles.text}> {release_date} </Text>
+        ) : (
+          <></>
+        )}
         <Text style={[styles.text, styles.story]} numberOfLines={3}>
           {" "}
           {overview}{" "}

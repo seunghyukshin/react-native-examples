@@ -39,8 +39,8 @@ function MovieScreen({ navigation }) {
               movieInfo={movie}
               onPress={() =>
                 navigation.navigate("Detail", {
-                  title: "what",
-                  count: 1,
+                  info: movie,
+                  from: "movie",
                 })
               }
               key={index}
@@ -62,8 +62,8 @@ function MovieScreen({ navigation }) {
                   movieInfo={movie}
                   onPress={() =>
                     navigation.navigate("Detail", {
-                      title: movie.title,
-                      count: 1,
+                      info: movie,
+                      from: "movie",
                     })
                   }
                   key={index}
@@ -84,8 +84,8 @@ function MovieScreen({ navigation }) {
                   movieInfo={movie}
                   onPress={() =>
                     navigation.navigate("Detail", {
-                      title: movie.title,
-                      count: 1,
+                      info: movie,
+                      from: "movie",
                     })
                   }
                   key={index}
