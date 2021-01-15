@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Linking } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const TvDetail = ({ info }) => {
+const TvDetail = ({ info, video }) => {
   const {
     overview,
     spoken_languages,
@@ -31,9 +32,6 @@ const TvDetail = ({ info }) => {
       <Text style={styles.text}> {first_air_date} </Text>
       <Text style={styles.contentTitle}> Genres </Text>
       <Text style={styles.text}>
-        {/* {genres
-          .filter((g, i) => i != genres.length - 1)
-          .map((g) => g.name + ",")} */}
         {genres.map((genre, i) => {
           let text = genre.name;
           if (i != genres.length - 1) text += ", ";
@@ -45,7 +43,27 @@ const TvDetail = ({ info }) => {
         {" "}
         {number_of_seasons} / {number_of_episodes}{" "}
       </Text>
-      <Text style={styles.contentTitle}> Videos </Text>
+      {video.length !== 0 ? (
+        <Text style={styles.contentTitle}> Videos </Text>
+      ) : (
+        <></>
+      )}
+      {video.map((v, i) => (
+        <View style={styles.videoRightView} key={i}>
+          <MaterialCommunityIcons
+            name="youtube"
+            color="white"
+            size={28}
+            style={{ marginRight: 10 }}
+          />
+          <Text
+            style={styles.text}
+            onPress={() => Linking.openURL(`http://youtube.com/list?${v.id}`)}
+          >
+            {v.name}
+          </Text>
+        </View>
+      ))}
     </View>
   );
 };
@@ -66,6 +84,7 @@ const styles = StyleSheet.create({
     color: "#dcdcdc",
     fontSize: 13,
   },
+  videoRightView: { flexDirection: "row", alignItems: "center" },
 });
 
 export default TvDetail;

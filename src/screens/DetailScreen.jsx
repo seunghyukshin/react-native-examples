@@ -9,11 +9,17 @@ import {
 } from "react-native";
 
 import { MovieDetail, TvDetail } from "~/components";
-import { getMovieDetail, getTvDetail } from "~/modules";
+import {
+  getMovieDetail,
+  getTvDetail,
+  getMovieVideo,
+  getTvVideo,
+} from "~/modules";
 import { IMAGE_URI } from "~/modules";
 
 function DetailScreen({ route }) {
   const [detail, setDetail] = useState(null);
+  const [video, setVideo] = useState(null);
 
   const { from } = route.params;
   const {
@@ -27,20 +33,24 @@ function DetailScreen({ route }) {
 
   const saveData = async () => {
     let detailData = null;
+    let videoData = null;
     if (from === "movie") {
       detailData = await getMovieDetail(id);
+      videoData = await getMovieVideo(id);
     } else if (from === "tv") {
       detailData = await getTvDetail(id);
+      videoData = await getTvVideo(id);
     }
     setDetail(detailData);
+    setVideo(videoData);
   };
 
   useEffect(() => {
-    detail ? "" : saveData();
+    detail && video ? "" : saveData();
     console.log(detail);
   });
   const title = original_title ? original_title : name;
-  return detail ? (
+  return detail && video ? (
     <ScrollView style={styles.container}>
       <ImageBackground
         source={{ uri: IMAGE_URI + backdrop_path }}
@@ -59,9 +69,9 @@ function DetailScreen({ route }) {
       </View>
 
       {from === "movie" ? (
-        <MovieDetail info={detail} />
+        <MovieDetail info={detail} video={video} />
       ) : (
-        <TvDetail info={detail} />
+        <TvDetail info={detail} video={video} />
       )}
     </ScrollView>
   ) : (

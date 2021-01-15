@@ -6,5 +6,7 @@ export {
   getAiringTv,
   getMovieDetail,
   getTvDetail,
+  getMovieVideo,
+  getTvVideo,
   IMAGE_URI,
 } from "./TmdbApi";

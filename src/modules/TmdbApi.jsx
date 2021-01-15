@@ -49,6 +49,20 @@ const getMovieDetail = async (movieId) => {
   return res.data;
 };
 
+const getMovieVideo = async (movieId) => {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${TMDB_KEY}&language=en-US`
+  );
+  return res.data.results;
+};
+
+const getTvVideo = async (tvId) => {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/tv/${tvId}/videos?api_key=${TMDB_KEY}&language=en-US`
+  );
+  return res.data.results;
+};
+
 export {
   getPopularMovies,
   getUpcomingMovies,
@@ -57,5 +71,7 @@ export {
   getAiringTv,
   getMovieDetail,
   getTvDetail,
+  getMovieVideo,
+  getTvVideo,
   IMAGE_URI,
 };
