@@ -13,11 +13,11 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
 - [ ] 앱 실행시 Spalsh Screen 1초
 - [x] Bottom Tab
 - [ ] Screen
-  - [ ] Movies
+  - [x] Movies
     - [x] 최상단 (자동 슬라이드)
     - [x] Popular Movies (슬라이드)
     - [x] Coming Soon
-  - [ ] TV
+  - [x] TV
     - [x] Popular Shows (슬라이드)
     - [x] Top Rated (슬라이드)
     - [x] Airing Today
@@ -33,10 +33,10 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
     - [x] 세로 component (Popular Movies, Popular Shows, Movies/TV Results)
     - [x] 가로 component (Coming Soon, Airing Today)
     - [x] 가로 세로 component는 isHover시 opacity 값 변경
-  - [ ] 영화 Detail
-    - [ ] 각 정보 출력
-    - [ ] Movies, TV, Search 스크린에서 들어올 수 있고, 뒤로가기 시 들어왔던 스크린으로 복귀
-    - [ ] videos 클릭 시) youtube 앱 실행 후, 해당하는 영상 보여줌
+  - [x] 영화 Detail
+    - [x] 각 정보 출력
+    - [x] Movies, TV, Search 스크린에서 들어올 수 있고, 뒤로가기 시 들어왔던 스크린으로 복귀
+    - [x] videos 클릭 시) youtube 앱 실행 후, 해당하는 영상 보여줌
   - [ ] Progress Bar
     - [ ] componentDidMount - 서버에서 값 받아오기 전까지
 
