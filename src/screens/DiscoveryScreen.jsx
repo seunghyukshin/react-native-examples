@@ -1,11 +1,41 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+
+import { VerticalCard } from "~/components";
+import { getDiscover } from "~/modules";
+
 function DiscoveryScreen() {
+  const [discovers, setDiscovers] = useState(null);
+
+  const saveData = async () => {
+    const data = await getDiscover();
+    setDiscovers(data);
+  };
+
+  useEffect(() => {
+    saveData();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <View style={styles.halfContainer}>
-        <Text style={styles.text}> Hello </Text>
-      </View>
+      {discovers ? (
+        <ScrollView horizontal={true} style={styles.cardList}>
+          {discovers.map((discover, index) => (
+            <VerticalCard
+              movieInfo={discover}
+              onPress={() =>
+                navigation.navigate("Detail", {
+                  info: discover,
+                  from: "movie",
+                })
+              }
+              key={index}
+            />
+          ))}
+        </ScrollView>
+      ) : (
+        <></>
+      )}
       <View style={styles.halfContainer}>
         <Text style={styles.text}> Discovery</Text>
       </View>

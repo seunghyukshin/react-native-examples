@@ -77,6 +77,13 @@ const getSearchTvs = async (keyword) => {
   return res.data.results.slice(0, 20);
 };
 
+const getDiscover = async () => {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+  );
+  return res.data.results;
+};
+
 export {
   getPopularMovies,
   getUpcomingMovies,
@@ -89,5 +96,6 @@ export {
   getTvVideo,
   getSearchMovies,
   getSearchTvs,
+  getDiscover,
   IMAGE_URI,
 };

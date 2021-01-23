@@ -10,5 +10,6 @@ export {
   getTvVideo,
   getSearchMovies,
   getSearchTvs,
+  getDiscover,
   IMAGE_URI,
 } from "./TmdbApi";
