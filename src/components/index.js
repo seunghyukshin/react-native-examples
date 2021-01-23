@@ -3,3 +3,4 @@ export { default as HorizontalCard } from "./HorizontalCard";
 export { default as AutoSlideCard } from "./AutoSlideCard";
 export { default as MovieDetail } from "./MovieDetail";
 export { default as TvDetail } from "./TvDetail";
+export { default as Loading } from "./Loading";

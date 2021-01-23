@@ -25,6 +25,7 @@ module.exports = function (api) {
             "@svg": "./src/res/svg",
             "@hooks": "./src/hooks",
             "@locales": "./src/locales",
+            "@assets": "./assets",
           },
         },
       ],

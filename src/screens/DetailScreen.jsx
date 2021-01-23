@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-import { MovieDetail, TvDetail } from "~/components";
+import { MovieDetail, TvDetail, Loading } from "~/components";
 import {
   getMovieDetail,
   getTvDetail,
@@ -75,9 +75,7 @@ function DetailScreen({ route }) {
       )}
     </ScrollView>
   ) : (
-    <View>
-      <Text> foking </Text>
-    </View>
+    <Loading />
   );
 }
 
