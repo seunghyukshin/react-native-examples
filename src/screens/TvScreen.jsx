@@ -96,10 +96,7 @@ function TvScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "black",
-  },
-
-  container: {
+    flex: 1,
     backgroundColor: "black",
   },
   subTitleContainer: { marginLeft: 30, marginTop: 40, marginBottom: 10 },
@@ -111,7 +108,6 @@ const styles = StyleSheet.create({
   cardList: {
     paddingLeft: 20,
   },
-
   halfContainer: {
     flex: 1,
     alignItems: "center",

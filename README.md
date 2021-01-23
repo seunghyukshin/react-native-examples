@@ -21,10 +21,10 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
     - [x] Popular Shows (슬라이드)
     - [x] Top Rated (슬라이드)
     - [x] Airing Today
-  - [ ] Search
-    - [ ] 입력창
-    - [ ] Movie Results (슬라이드)
-    - [ ] TV Results (슬라이드)
+  - [x] Search
+    - [x] 입력창
+    - [x] Movie Results (슬라이드)
+    - [x] TV Results (슬라이드)
   - [ ] Discovery
     - [ ] Drag & Drop
 - [ ] Component
