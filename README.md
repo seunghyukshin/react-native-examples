@@ -27,6 +27,7 @@ https://play.google.com/store/apps/details?id=co.nomadcoders.noovies
     - [x] TV Results (슬라이드)
   - [ ] Discovery
     - [ ] Drag & Drop
+    - [ ] Image z축 쌓기
 - [ ] Component
   - [x] 영화 프로필
     - [x] Movies 최상단 component

@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
 import { VerticalCard } from "~/components";
 import { getSearchMovies, getSearchTvs } from "~/modules";
 
-function SearchScreen() {
+function SearchScreen({ navigation }) {
   const [keyword, setKeyword] = useState("");
   const [movies, setMovies] = useState(null);
   const [tvs, setTvs] = useState(null);
@@ -14,7 +14,10 @@ function SearchScreen() {
     const tvDatas = await getSearchTvs(keyword);
 
     if (movieDatas.length != 0) setMovies(movieDatas);
+    else setMovies(null);
+
     if (tvDatas.length != 0) setTvs(tvDatas);
+    else setTvs(null);
   };
   return (
     <ScrollView style={styles.container}>
