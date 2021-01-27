@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
-import { VerticalCard, HorizontalCard } from "~/components";
+import { VerticalCard, HorizontalCard, Loading } from "~/components";
 import { getPopularTv, getTopRatedTv, getAiringTv } from "~/modules";
 
 function TvScreen({ navigation }) {
@@ -88,9 +88,7 @@ function TvScreen({ navigation }) {
       </View>
     </ScrollView>
   ) : (
-    <View>
-      <Text> fuck u</Text>
-    </View>
+    <Loading />
   );
 }
 

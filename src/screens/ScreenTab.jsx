@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -9,7 +9,17 @@ import DiscoveryScreen from "./DiscoveryScreen";
 
 const Tab = createBottomTabNavigator();
 
-function ScreenTab() {
+const getHeaderName = (route) =>
+  route?.state?.routeNames[route.state.index] || "Movies";
+
+function ScreenTab({ navigation, route }) {
+  useLayoutEffect(() => {
+    const name = getHeaderName(route);
+    // const name = route.name;
+    navigation.setOptions({
+      title: name,
+    });
+  }, [route]);
   return (
     <Tab.Navigator
       tabBarOptions={{

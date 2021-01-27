@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
 
-import { VerticalCard, HorizontalCard, AutoSlideCard } from "~/components";
+import {
+  VerticalCard,
+  HorizontalCard,
+  AutoSlideCard,
+  Loading,
+} from "~/components";
 import { getPopularMovies, getUpcomingMovies } from "~/modules";
 
 function MovieScreen({ navigation }) {
@@ -96,9 +101,7 @@ function MovieScreen({ navigation }) {
       </View>
     </ScrollView>
   ) : (
-    <View>
-      <Text> fu ck u</Text>
-    </View>
+    <Loading />
   );
 }
 
