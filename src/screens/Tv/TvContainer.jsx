@@ -4,7 +4,7 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { VerticalCard, HorizontalCard, Loading } from "~/components";
 import { getPopularTv, getTopRatedTv, getAiringTv } from "~/modules";
 
-function TvScreen({ navigation }) {
+export default function ({ navigation }) {
   const [popularTvs, setPopularTvs] = useState(null);
   const [topRatedTvs, setTopRatedTvs] = useState(null);
   const [airingTvs, setAiringTvs] = useState(null);
@@ -115,5 +115,3 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
-
-export default TvScreen;

@@ -10,7 +10,7 @@ import {
 } from "~/components";
 import { getPopularMovies, getUpcomingMovies } from "~/modules";
 
-function MovieScreen({ navigation }) {
+export default function ({ navigation }) {
   const [popularMovies, setPopularMovies] = useState(null);
   const [upcomingMovies, setUpcomingMovies] = useState(null);
 
@@ -122,5 +122,3 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
 });
-
-export default MovieScreen;

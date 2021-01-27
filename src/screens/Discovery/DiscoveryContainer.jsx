@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Animated,
-  PanResponder,
-} from "react-native";
+import { View, Text, StyleSheet, Animated, PanResponder } from "react-native";
 
 import { VerticalCard } from "~/components";
 import { getDiscover } from "~/modules";
 
-function DiscoveryScreen() {
+export default function () {
   const pan = useRef(new Animated.ValueXY()).current;
   const [discovers, setDiscovers] = useState(null);
 
@@ -90,5 +83,3 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
-
-export default DiscoveryScreen;

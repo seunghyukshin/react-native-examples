@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, TextInput, ScrollView } from "react-native";
 import { VerticalCard } from "~/components";
 import { getSearchMovies, getSearchTvs } from "~/modules";
 
-function SearchScreen({ navigation }) {
+export default function ({ navigation }) {
   const [keyword, setKeyword] = useState("");
   const [movies, setMovies] = useState(null);
   const [tvs, setTvs] = useState(null);
@@ -111,5 +111,3 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
 });
-
-export default SearchScreen;

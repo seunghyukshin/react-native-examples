@@ -2,10 +2,10 @@ import React, { useLayoutEffect } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import MovieScreen from "./MovieScreen";
-import TvScreen from "./TvScreen";
-import SearchScreen from "./SearchScreen";
-import DiscoveryScreen from "./DiscoveryScreen";
+import MoviesScreen from "~/screens/Movies";
+import TvScreen from "~/screens/Tv";
+import SearchScreen from "~/screens/Search";
+import DiscoveryScreen from "~/screens/Discovery";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +31,7 @@ function ScreenTab({ navigation, route }) {
     >
       <Tab.Screen
         name="Movie"
-        component={MovieScreen}
+        component={MoviesScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons

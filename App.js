@@ -1,12 +1,12 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
-import ScreenTab from "~/screens";
+import ScreenStack from "~/navigation/ScreenStack";
 
 export default function App() {
   return (
     <NavigationContainer>
-      <ScreenTab />
+      <ScreenStack />
     </NavigationContainer>
   );
 }

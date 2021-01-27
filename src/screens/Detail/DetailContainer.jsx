@@ -17,7 +17,7 @@ import {
 } from "~/modules";
 import { IMAGE_URI } from "~/modules";
 
-function DetailScreen({ route }) {
+export default function ({ route }) {
   const [detail, setDetail] = useState(null);
   const [video, setVideo] = useState(null);
 
@@ -125,5 +125,3 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
 });
-
-export default DetailScreen;

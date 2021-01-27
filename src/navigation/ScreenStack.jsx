@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import ScreenTab from "./ScreenTab";
-import DetailScreen from "./DetailScreen";
+import Detail from "~/screens/Detail";
 
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ function ScreenStack() {
       <Stack.Screen name="MyApp" component={ScreenTab}></Stack.Screen>
       <Stack.Screen
         name="Detail"
-        component={DetailScreen}
+        component={Detail}
         options={({ route }) =>
           route.params.info.title
             ? { title: route.params.info.title }
