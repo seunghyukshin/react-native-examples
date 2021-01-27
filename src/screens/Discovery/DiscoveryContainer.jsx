@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, Text, StyleSheet, Animated, PanResponder } from "react-native";
+import { Animated, PanResponder } from "react-native";
 
-import { VerticalCard } from "~/components";
 import { getDiscover } from "~/modules";
+import DiscoveryPresenter from "./DiscoveryPresenter";
 
 export default function () {
   const pan = useRef(new Animated.ValueXY()).current;
@@ -34,52 +34,10 @@ export default function () {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {discovers ? (
-        <View>
-          {discovers.map((discover, index) => (
-            <Animated.View
-              style={{
-                transform: [{ translateX: pan.x }, { translateY: pan.y }],
-              }}
-              {...panResponder.panHandlers}
-            >
-              <VerticalCard
-                movieInfo={discover}
-                onPress={() =>
-                  navigation.navigate("Detail", {
-                    info: discover,
-                    from: "movie",
-                  })
-                }
-                key={index}
-              />
-            </Animated.View>
-          ))}
-        </View>
-      ) : (
-        <></>
-      )}
-      <View style={styles.halfContainer}>
-        <Text style={styles.text}> Discovery</Text>
-      </View>
-    </View>
+    <DiscoveryPresenter
+      discovers={discovers}
+      panResponder={panResponder}
+      pan={pan}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "black",
-  },
-  halfContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: "white",
-  },
-});

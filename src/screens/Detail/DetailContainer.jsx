@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  ImageBackground,
-} from "react-native";
 
-import { MovieDetail, TvDetail, Loading } from "~/components";
+import { Loading } from "~/components";
 import {
   getMovieDetail,
   getTvDetail,
   getMovieVideo,
   getTvVideo,
 } from "~/modules";
-import { IMAGE_URI } from "~/modules";
-
+import DetailPresenter from "./DetailPresenter";
 export default function ({ route }) {
   const [detail, setDetail] = useState(null);
   const [video, setVideo] = useState(null);
@@ -47,81 +38,20 @@ export default function ({ route }) {
 
   useEffect(() => {
     detail && video ? "" : saveData();
-    console.log(detail);
   });
   const title = original_title ? original_title : name;
+
   return detail && video ? (
-    <ScrollView style={styles.container}>
-      <ImageBackground
-        source={{ uri: IMAGE_URI + backdrop_path }}
-        style={styles.bgImage}
-      ></ImageBackground>
-
-      <View style={styles.topContainer}>
-        <Image
-          source={{ uri: IMAGE_URI + poster_path }}
-          style={styles.image}
-        ></Image>
-        <View style={styles.rightView}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.text}>⭐ {vote_average} / 10</Text>
-        </View>
-      </View>
-
-      {from === "movie" ? (
-        <MovieDetail info={detail} video={video} />
-      ) : (
-        <TvDetail info={detail} video={video} />
-      )}
-    </ScrollView>
+    <DetailPresenter
+      detail={detail}
+      video={video}
+      poster_path={poster_path}
+      backdrop_path={backdrop_path}
+      vote_average={vote_average}
+      title={title}
+      from={from}
+    />
   ) : (
     <Loading />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "black",
-  },
-  topContainer: {
-    flexDirection: "row",
-    paddingTop: 80,
-    paddingLeft: 20,
-  },
-  rightView: {
-    marginLeft: 40,
-    // alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 10,
-    color: "white",
-  },
-  image: {
-    width: 100,
-    height: 170,
-    borderRadius: 5,
-  },
-  bgImage: {
-    width: "100%",
-    height: 220,
-    position: "absolute",
-    opacity: 0.5,
-  },
-  halfContainer: {
-    paddingTop: 20,
-    paddingBottom: 30,
-    paddingHorizontal: 30,
-  },
-  contentTitle: {
-    marginTop: 20,
-    color: "#dcdcdc",
-    fontSize: 15,
-    marginBottom: 5,
-  },
-  text: {
-    color: "#dcdcdc",
-    fontSize: 13,
-  },
-});

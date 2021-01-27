@@ -14,10 +14,6 @@ const MovieDetail = ({ info, video }) => {
   } = info;
   return (
     <View style={styles.halfContainer}>
-      {console.log("==== info =====")}
-      {console.log(info)}
-      {console.log("==== video =====")}
-      {console.log(video)}
       <Text style={styles.contentTitle}> Overview </Text>
       <Text style={styles.text}> {overview} </Text>
       <Text style={styles.contentTitle}> Language </Text>
